@@ -26,7 +26,7 @@
                                     <span class="text-white"><?=$movie['duration']?></span>
                                 </div>
                                 <div class="hover-buttons">
-                                    <a href="show-detail.html" role="button" class="btn btn-hover"><i
+                                    <a href="?route=movie-view&id=<?=$movie['id']?>" role="button" class="btn btn-hover"><i
                                             class="fa fa-play mr-1" aria-hidden="true"></i>
                                         Hozir ko'rish
                                     </a>

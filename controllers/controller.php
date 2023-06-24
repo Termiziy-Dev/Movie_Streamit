@@ -22,9 +22,11 @@ $recommendMovies = getLatestMovies('recommend');
 $route = (!empty($_GET['route'])) ? $_GET['route'] : null;
 if (!empty($route)){
     switch ($route){
-        case "movie-view":
+        case "movie-views":
             $id = (!empty($_GET['id'])) ? $_GET['id'] : null;
             if (!empty($id)){
+                addSeenCount('movie',$id);
+
                 $movieData = getMovieDataById($id);
                 if (!empty($movieData)){
                     $image = getImage('movie',$id,$movieData['image']);
@@ -36,6 +38,36 @@ if (!empty($route)){
             } else{
                 require_once __DIR__ . '/../views/404.php';
             }
+        break;
+
+        case "blog":
+            $news = getAllNews();
+            $newsCategories = getAllNewsCategories();
+            require_once __DIR__ . '/../views/blog.php';
+        break;
+
+        case "blog-category":
+            $id = (!empty($_GET['id'])) ? $_GET['id'] : null;
+            if (!empty($id)){
+                $newsCategories = getAllNewsCategories();
+                $categoryNews = getAllCategoryNews($id);
+                require_once __DIR__ . '/../views/blog-category.php';
+            }
+        break;
+
+        case "news-item":
+            $id = (!empty($_GET['id'])) ? $_GET['id'] : null;
+            if (!empty($id)){
+                $news = getNewsItem($id);
+                $newsCategories = getAllNewsCategories();
+                addSeenCount('news',$id);
+                require_once __DIR__ . '/../views/news-item.php';
+            }
+
+        break;
+
+        default:
+            require_once __DIR__ . '/../views/404.php';
         break;
     }
 }else{

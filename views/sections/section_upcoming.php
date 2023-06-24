@@ -27,7 +27,7 @@
                                     <span class="text-white"><?=$upcoming['duration']?></span>
                                 </div>
                                 <div class="hover-buttons">
-                                    <a href="show-detail.html" role="button" class="btn btn-hover"><i
+                                    <a href="?route=movie-view&id=<?=$upcoming['id']?>" role="button" class="btn btn-hover"><i
                                             class="fa fa-play mr-1" aria-hidden="true"></i>
                                         Oldindan joy band qilish
                                     </a>
